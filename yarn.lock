@@ -236,7 +236,7 @@ onetime@^6.0.0:
 
 only-allow@^1.1.1:
   version "1.1.1"
-  resolved "https://registry.yarnpkg.com/only-allow/-/only-allow-1.1.1.tgz#caa4b0f04d6abe2674631877cbfbcdfab537669c"
+  resolved "https://registry.npmmirror.com/only-allow/-/only-allow-1.1.1.tgz#caa4b0f04d6abe2674631877cbfbcdfab537669c"
   integrity sha512-WE01hpInLQUF3MKK7vhu4p1VZLKb4rL4d+CI3rwwwsToXELx6YawNFhZy3rVU3rpQpI9kF9zFMk4OjB3xwXdJA==
   dependencies:
     boxen "^4.2.0"
