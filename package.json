@@ -1,6 +1,6 @@
 {
   "name": "yarn-migrator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "bin": {
@@ -23,7 +23,5 @@
     "@types/fs-extra": "^9.0.13",
     "only-allow": "^1.1.1"
   },
-  "scripts": {
-    "preinstall": "npx only-allow yarn"
-  }
+  "scripts": {}
 }

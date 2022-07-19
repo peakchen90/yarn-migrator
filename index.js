@@ -5,6 +5,8 @@ const {version} = require('./package.json');
 
 const ROOT = process.cwd()
 
+console.log('yarn-migrator version:', version)
+
 function exit(message) {
   console.error(message);
   process.exit(1);
