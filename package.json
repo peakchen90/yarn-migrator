@@ -24,5 +24,6 @@
     "only-allow": "^1.1.1"
   },
   "scripts": {
+    "preinstall": "npx only-allow yarn"
   }
 }
