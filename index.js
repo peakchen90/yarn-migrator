@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const execa = require('execa');
+const {version} = require('./package.json');
 
 const ROOT = process.cwd()
 
@@ -9,6 +10,13 @@ function exit(message) {
   process.exit(1);
 }
 
+async function checkUpgraded() {
+  const {stdout} = await execa('git', ['log', '--grep', `yarn-migrator@${version}`], {stdio: 'pipe'})
+  if (stdout) {
+    console.log('迁移已完成，流程终止')
+    process.exit(0);
+  }
+}
 
 async function checkInstallGlobalYarn() {
   try {
@@ -52,12 +60,13 @@ async function upgrade() {
 
 async function commitAndPush() {
   await execa('git', ['add', 'package.json', 'yarn.lock'], {stdio: 'inherit'})
-  await execa('git', ['commit', '-m', 'chore: 工程迁移至 yarn (v1) 工具 (created by yarn-migrator)'], {stdio: 'inherit'})
+  await execa('git', ['commit', '-m', `chore: 工程迁移至 yarn (v1) 工具 (yarn-migrator@${version})`], {stdio: 'inherit'})
   await execa('git', ['pull'], {stdio: 'inherit'})
   await execa('git', ['push'], {stdio: 'inherit'})
 }
 
 (async () => {
+  await checkUpgraded();
   await checkInstallGlobalYarn()
   await checkGitStatus()
   await upgrade()
