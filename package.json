@@ -1,0 +1,21 @@
+{
+  "name": "yarn-migrator",
+  "version": "0.0.1-beta.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "yarn-migrator": "cli.js"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "dependencies": {
+    "execa": "^5.1.1",
+    "fs-extra": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/execa": "^2.0.0",
+    "@types/fs-extra": "^9.0.13"
+  }
+}
