@@ -20,6 +20,10 @@
   },
   "devDependencies": {
     "@types/execa": "^2.0.0",
-    "@types/fs-extra": "^9.0.13"
+    "@types/fs-extra": "^9.0.13",
+    "only-allow": "^1.1.1"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow yarn"
   }
 }
