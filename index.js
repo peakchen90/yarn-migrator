@@ -66,7 +66,7 @@ async function upgrade() {
 }
 
 async function commitAndPush() {
-  await execa('git', ['add', 'package.json', 'yarn.lock'], {stdio: 'inherit'})
+  await execa('git', ['add', 'package.json', 'yarn.lock', 'package-lock.json'], {stdio: 'inherit'})
   await execa('git', ['commit', '-m', `chore: 工程迁移至 yarn (v1) 工具 (yarn-migrator@${version})`], {stdio: 'inherit'})
   await execa('git', ['pull'], {stdio: 'inherit'})
   await execa('git', ['push'], {stdio: 'inherit'})
