@@ -40,13 +40,18 @@ async function checkGitStatus() {
 }
 
 async function upgrade() {
+  const pkgPath = path.join(ROOT, 'package.json')
+  let pkg = fs.readJsonSync(pkgPath)
+  if (pkg.scripts && pkg.scripts.preinstall) {
+    exit('scripts `preinstall` 钩子已被占用，请先处理')
+  }
+
   await fs.remove(path.join(ROOT, 'package-lock.json'))
   await fs.remove(path.join(ROOT, 'node_modules'))
   await execa('yarn', ['install'], {stdio: 'inherit'})
   await execa('yarn', ['add', '-D', 'only-allow'], {stdio: 'inherit'})
 
-  const pkgPath = path.join(ROOT, 'package.json')
-  const pkg = fs.readJsonSync(pkgPath)
+  pkg = fs.readJsonSync(pkgPath)
   if (pkg.scripts && pkg.scripts.preinstall) {
     exit('scripts `preinstall` 钩子已被占用，请先处理')
   }
