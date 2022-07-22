@@ -59,6 +59,11 @@ async function upgrade() {
     ...pkg.scripts,
     preinstall: 'npx only-allow yarn'
   }
+  pkg.engines = {
+    ...pkg.engines,
+    node: '>= 16'
+  }
+
   fs.writeJsonSync(pkgPath, pkg, {
     encoding: 'utf-8',
     spaces: 2
